@@ -1,7 +1,11 @@
 <div class="bg-sky h-screen main-grid">
   <div class="bg-white flex items-center justify-between p-4 md:flex-col md:py-8 md:px-0">
     <div><%= image_tag "icons/logo.svg", class: "w-12 md:w-auto" %></div>
-    <div><%= image_tag "icons/more-horizontal.svg" %></div>
+    <div>
+      <%= link_to(sign_out_path, method: :delete) do %>
+        <%= image_tag "icons/logout.svg", class: "logout-icon" %>
+      <% end %>
+    </div>
   </div>
   <div class="content p-4 md:p-0">
     <div class="m-auto h-full pt-8" style="max-width: 500px">

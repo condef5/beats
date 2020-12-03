@@ -12,3 +12,11 @@ html {
     grid-template-rows: initial;
   }
 }
+
+.logout-icon {
+  filter: invert(1);
+
+  &:hover {
+    filter: inherit;
+  }
+}
