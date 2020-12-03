@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-rows: 60px;
+
+  @media screen and (min-width: 768px) {
+    column-gap: 48px;
+    grid-template-columns: 60px 1fr 1fr;
+    grid-template-rows: initial;
+  }
+}
+
+.logout-icon {
+  filter: invert(1);
+
+  &:hover {
+    filter: inherit;
+  }
+}
