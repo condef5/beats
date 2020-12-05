@@ -10,6 +10,9 @@
 
     <%= javascript_packs_with_chunks_tag "tailwind" %>
     <%= stylesheet_pack_tag "tailwind" %>
+
+    <%#  Additional JavaScript %>
+    <%= content_for(:javascript) if content_for?(:javascript) %>
   </head>
 
   <body>
