@@ -23,7 +23,9 @@ function Songs({ songs, currentSong, setCurrentSong, setPlaying }) {
           <span className="overflow-ellipsis overflow-hidden">
             {song.attributes.name}
           </span>
-          <div>{formatSeconds(song.attributes.duration)}</div>
+          <div className="w-13 flex-shrink-0 text-right ml-1">
+            {formatSeconds(song.attributes.duration)}
+          </div>
         </li>
       ))}
     </div>
