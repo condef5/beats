@@ -8,8 +8,30 @@ html {
 
   @media screen and (min-width: 768px) {
     column-gap: 48px;
-    grid-template-columns: 60px 1fr 1fr;
+    grid-template-columns: 60px 1fr;
     grid-template-rows: initial;
+  }
+}
+
+.sub-grid {
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
+
+    .content {
+      grid-column: 1/3;
+      grid-row: 1;
+      overflow-y: auto;
+      max-height: 100vh;
+      padding: 2em;
+    }
+
+    .player-container {
+      grid-column: 2/3;
+      grid-row: 1;
+      max-width: 600px;
+    }
   }
 }
 
@@ -18,5 +40,57 @@ html {
 
   &:hover {
     filter: inherit;
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.video-overlay {
+  filter: grayscale(1);
+  cursor: pointer;
+  transition: 0.25s ease transform;
+  transform: scale(0);
+
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.85;
+    transition: opacity 0.15s ease-in 0s;
+  }
+
+  &:hover {
+    filter: none;
+
+    .play-icon {
+      opacity: 1;
+    }
+  }
+}
+
+// animations
+.rotating {
+  animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+  from{
+      transform: rotate(0deg);
+  }
+  to{
+      transform: rotate(360deg);
   }
 }

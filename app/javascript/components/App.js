@@ -4,7 +4,7 @@ import Player from "./Player";
 
 function App() {
   return (
-    <div className="sub-grid pt-8">
+    <div className="sub-grid">
       <Feed />
       <Player />
     </div>
