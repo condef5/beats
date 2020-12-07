@@ -403,6 +403,10 @@ records = [
     https://youtu.be/QT9OawmZ_FY
     One Piece Ending 1 Sub Español
   ],
+  %W[
+    https://youtu.be/QT9OawmZ_FY
+    One Piece Ending 1 Sub Español
+  ],
 ]
 
 i = 0

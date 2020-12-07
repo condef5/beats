@@ -4974,6 +4974,11 @@ normalize.css@^8.0.1:
   resolved "https://registry.able.co/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
   integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
+notify-space@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.able.co/notify-space/-/notify-space-1.2.4.tgz#f4096d305131f837e3c3da6f235ecf4be10e6aea"
+  integrity sha512-Nc9X2LG0O0LHSQ8zkQTDpeGGTsbXWjqYKzPATqNkra1ThC2BV2KvqsjKXEb6dUm7fW4S7Gmmvntg6SPfF5JhJQ==
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.able.co/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"

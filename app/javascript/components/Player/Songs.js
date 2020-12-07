@@ -4,7 +4,7 @@ import { formatSeconds } from "../../utils";
 function Songs({ songs, currentSong, setCurrentSong, setPlaying }) {
   return (
     <div
-      className="bg-white mt-8 p-3 rounded shadow-card overflow-y-auto"
+      className="bg-white mt-8 p-3 text-gray-700 rounded shadow-card overflow-y-auto"
       style={{ maxHeight: "460px" }}
     >
       {songs.map((song) => (

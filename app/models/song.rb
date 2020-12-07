@@ -3,7 +3,7 @@ class Song < ApplicationRecord
   before_create :set_video_info
 
   # validations
-  validates :url, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: { message: "The video url has been taken." }
 
   private
 

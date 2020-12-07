@@ -1,3 +1,20 @@
+function once(fn) {
+  let result = null;
+
+  return (...args) => {
+    if (result) return result;
+    result = fn(args);
+    return result;
+  };
+}
+
+function queryCSRFToken() {
+  const metaTag = document.querySelector("meta[name=csrf-token]");
+  return metaTag ? metaTag.content : null;
+}
+
+export const getCSRFToken = once(queryCSRFToken);
+
 export function formatSeconds(seconds) {
   if (!seconds) return "00:00";
   const hours = seconds / 3600;
