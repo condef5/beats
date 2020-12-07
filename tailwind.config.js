@@ -236,6 +236,7 @@ module.exports = {
       inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
       outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
       cool: "0px 20px 25px rgba(0, 0, 0, 0.04)",
+      card: "0 30px 60px rgba(0,0,0,0.12)",
       none: "none",
     },
     container: {},
