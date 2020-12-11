@@ -1,17 +1,18 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import { usePlayerState } from "../Context/PlayerContext";
 import { PlayIcon, LoadingIcon } from "./icons";
 
-function Video({
-  playing,
-  handlePlay,
-  handlePause,
-  preview,
-  currentSong,
-  nextSong,
-}) {
+function VideoPlayer() {
+  const {
+    playing,
+    handlePlay,
+    handlePause,
+    preview,
+    currentSong,
+    nextSong,
+  } = usePlayerState();
   const [loading, setLoading] = React.useState(true);
-  if (!currentSong) return "loading...";
 
   React.useEffect(() => {
     setLoading(true);
@@ -59,6 +60,17 @@ function Video({
       </div>
     </div>
   );
+}
+
+function Video() {
+  const { currentSong } = usePlayerState();
+
+  if (!currentSong)
+    return (
+      <div className="relative bg-white p-3 h-60 rounded shadow-card"></div>
+    );
+
+  return <VideoPlayer />;
 }
 
 export default Video;

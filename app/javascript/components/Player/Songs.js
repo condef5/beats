@@ -1,7 +1,18 @@
 import React from "react";
 import { formatSeconds } from "../../utils";
+import { usePlayerState } from "../Context/PlayerContext";
 
-function Songs({ songs, currentSong, setCurrentSong, setPlaying }) {
+function Songs() {
+  const { songs, currentSong, setCurrentSong, setPlaying } = usePlayerState();
+
+  if (songs.length === 0) {
+    return (
+      <div className="bg-white mt-8 p-3 text-gray-700 rounded shadow-card">
+        You should add some songs -_-
+      </div>
+    );
+  }
+
   return (
     <div
       className="bg-white mt-8 p-3 text-gray-700 rounded shadow-card overflow-y-auto"
