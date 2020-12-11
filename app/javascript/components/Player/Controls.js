@@ -1,9 +1,29 @@
 import React from "react";
+import { usePlayerState } from "../Context/PlayerContext";
 import { PlayIcon, PauseIcon, PrevIcon, NextIcon } from "./icons";
 
-function Controls({ playing, handlePlay, handlePause, prevSong, nextSong }) {
+const disableStyles = {
+  filter: "contrast(0.5)",
+  pointerEvents: "none",
+};
+
+function Controls() {
+  const {
+    playing,
+    handlePlay,
+    handlePause,
+    prevSong,
+    nextSong,
+    songs,
+  } = usePlayerState();
+
+  const styles = songs.length === 0 ? disableStyles : {};
+
   return (
-    <div className="bg-white mt-8 p-3 rounded shadow-card flex justify-center items-center">
+    <div
+      className="bg-white mt-8 p-3 rounded shadow-card flex justify-center items-center"
+      style={styles}
+    >
       <PrevIcon
         fillColor="#000"
         size="16px"
