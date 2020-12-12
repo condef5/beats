@@ -1,5 +1,5 @@
 import React from "react";
-import { usePlayerState } from "./Context/PlayerContext";
+import { usePlayerState } from "../Context/PlayerContext";
 
 function Song({ song }) {
   const { name, image } = song.attributes;
