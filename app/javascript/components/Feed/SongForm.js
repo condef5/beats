@@ -2,13 +2,25 @@ import React from "react";
 import { useMutation, queryCache } from "react-query";
 import notify from "notify-space";
 import { createSong } from "./api";
-import { formatSong } from "../../utils";
+import { formatSong, getSongOptimistic } from "../../utils";
 
 function SongForm() {
   const [mutate] = useMutation(createSong, {
-    onSuccess: () => {
-      queryCache.invalidateQueries("songs");
+    onMutate: (song) => {
+      queryCache.cancelQueries("songs");
+
+      const previousGroupSongs = queryCache.getQueryData("songs");
+
+      console.log(song);
+
+      queryCache.setQueryData("songs", (oldSongs) => {
+        return [{ data: [getSongOptimistic(song)] }, ...oldSongs];
+      });
+
+      return () => queryCache.setQueryData("songs", previousGroupSongs);
     },
+    onError: (_error, _newSong, rollback) => rollback(),
+    onSettled: () => queryCache.invalidateQueries("songs"),
   });
   const [song, setSong] = React.useState("");
 

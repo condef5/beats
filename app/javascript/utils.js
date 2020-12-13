@@ -20,6 +20,21 @@ function getYoutubeId(url) {
 
 // -------exports-------
 
+export function getSongOptimistic(song) {
+  const image = `http://i3.ytimg.com/vi/${getYoutubeId(
+    song.attributes.url
+  )}/maxresdefault.jpg`;
+
+  return {
+    id: new Date().toISOString(),
+    attributes: {
+      name: "Loading name...",
+      image,
+      url: song.attributes.url,
+    },
+  };
+}
+
 export function formatSeconds(seconds) {
   if (!seconds) return "00:00";
   const hours = seconds / 3600;
