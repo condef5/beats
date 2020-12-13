@@ -1,22 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="800" width="1200" viewBox="0 -0.00002 800 800.03302">
+<svg xmlns="http://www.w3.org/2000/svg" height="800" width="1200"
+  viewBox="0 -0.00002008676528930664 800 800.0330200195312">
   <defs>
     <linearGradient gradientUnits="userSpaceOnUse" gradientTransform="scale(.99998 1.00002)" id="a" y2="700.337"
       x2="131.401" y1="122.013" x1="677.827">
-      <stop offset="0%" stop-color="#E1F4FE" />
-      <stop offset="100%" stop-color="#1DE3FD" />
+      <stop offset="0%" stop-color="#E1F4FE"></stop>
+      <stop offset="100%" stop-color="#1DE3FD"></stop>
     </linearGradient>
     <linearGradient gradientUnits="userSpaceOnUse" gradientTransform="scale(.89139 1.12185)" id="b" y2="430.191"
       x2="384.969" y1="303.155" x1="530.205">
-      <stop offset="0%" stop-color="#FD546B" />
-      <stop offset="100%" stop-color="#F8C3EF" />
+      <stop offset="0%" stop-color="#FD546B"></stop>
+      <stop offset="100%" stop-color="#F8C3EF"></stop>
     </linearGradient>
   </defs>
   <g fill-rule="evenodd" fill="none">
     <path fill="url(#a)"
       d="M291.177 16.364v216.222c31.58-20.638 69.288-32.68 109.833-32.68 111.044 0 201.072 90.024 201.072 201.076 0 111.051-90.028 201.077-201.072 201.077-111.051 0-201.08-90.026-201.08-201.077 0-3.572.102-7.12.282-10.649l-.281-335.092C80.994 124.565 1 253.392 1 400.98 1 621.904 180.097 801 401.018 801 621.936 801 801 621.903 801 400.982 801 180.064 621.936.967 401.018.967c-38.11 0-74.923 5.442-109.841 15.397z"
-      transform="translate(-1 -.967)" />
+      transform="translate(-1 -.967)"></path>
     <path fill="url(#b)"
       d="M356.586 491.434c-16.799-10.823-13.08-26.18-13.08-26.18V326.125s.646-18.24 15.387-25.178c14.74-6.937 26.903-.112 41.128 8.764 29.131 21.082 79.512 59.562 79.512 59.562s45.88 24.417 0 56.566c-45.879 32.15-85.816 61.651-85.816 61.651s-20.332 14.766-37.131 3.944z"
-      transform="translate(-1 -.967)" />
+      transform="translate(-1 -.967)"></path>
   </g>
 </svg>
