@@ -36,4 +36,10 @@ export function formatSong(song_url) {
   return `https://youtu.be/${id}`;
 }
 
+export function getParam(url, paramKey) {
+  const urlObject = new URL(url);
+  const params = new URLSearchParams(urlObject.search);
+  return params.get(paramKey);
+}
+
 export const getCSRFToken = once(queryCSRFToken);
