@@ -294,6 +294,7 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      rubik: "'Rubik', sans-serif",
     },
     fontSize: {
       xs: "0.75rem",

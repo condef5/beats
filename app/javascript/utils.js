@@ -13,7 +13,12 @@ function queryCSRFToken() {
   return metaTag ? metaTag.content : null;
 }
 
-export const getCSRFToken = once(queryCSRFToken);
+function getYoutubeId(url) {
+  url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  return undefined !== url[2] ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+}
+
+// -------exports-------
 
 export function formatSeconds(seconds) {
   if (!seconds) return "00:00";
@@ -25,3 +30,16 @@ export function formatSeconds(seconds) {
     .map((val) => `0${Math.floor(val)}`.slice(-2))
     .join(":");
 }
+
+export function formatSong(song_url) {
+  const id = getYoutubeId(song_url);
+  return `https://youtu.be/${id}`;
+}
+
+export function getParam(url, paramKey) {
+  const urlObject = new URL(url);
+  const params = new URLSearchParams(urlObject.search);
+  return params.get(paramKey);
+}
+
+export const getCSRFToken = once(queryCSRFToken);

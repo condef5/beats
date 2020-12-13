@@ -1,16 +1,20 @@
 import React from "react";
+import { ReactQueryDevtools } from "react-query-devtools";
+import { PlayerProvider } from "./Context/PlayerContext";
 import Feed from "./Feed";
 import Player from "./Player";
-import { PlayerProvider } from "./Context/PlayerContext";
 
 function App() {
   return (
-    <PlayerProvider>
-      <div className="sub-grid">
-        <Feed />
-        <Player />
-      </div>
-    </PlayerProvider>
+    <>
+      <PlayerProvider>
+        <div className="sub-grid">
+          <Feed />
+          <Player />
+        </div>
+      </PlayerProvider>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </>
   );
 }
 

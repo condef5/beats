@@ -8,7 +8,7 @@ function Songs() {
   if (songs.length === 0) {
     return (
       <div className="bg-white mt-8 p-3 text-gray-700 rounded shadow-card">
-        You should add some songs -_-
+        No song has been added yet - ʕ◉ᴥ◉ʔ
       </div>
     );
   }
