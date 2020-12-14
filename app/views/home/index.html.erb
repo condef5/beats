@@ -12,5 +12,10 @@
     </div>
   </div>
 
-  <div id="app"></div>
+  <%= content_tag(
+    :div,
+    nil,
+    id: "app",
+    data: { songs: @initial_songs }
+  )%>
 </div>
