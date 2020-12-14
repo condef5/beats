@@ -3,5 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<App />, document.querySelector("#app"));
+  const $app = document.querySelector("#app");
+
+  ReactDOM.render(<App songs={JSON.parse($app.dataset.songs)} />, $app);
 });

@@ -1,18 +1,21 @@
 import React from "react";
 import { ReactQueryDevtools } from "react-query-devtools";
 import { PlayerProvider } from "./Context/PlayerContext";
+import { ServerDataProvider } from "./Context/ServerDataContext";
 import Feed from "./Feed";
 import Player from "./Player";
 
-function App() {
+function App({ songs }) {
   return (
     <>
-      <PlayerProvider>
-        <div className="sub-grid">
-          <Feed />
-          <Player />
-        </div>
-      </PlayerProvider>
+      <ServerDataProvider data={{ initialSongs: [songs] }}>
+        <PlayerProvider>
+          <div className="sub-grid">
+            <Feed />
+            <Player />
+          </div>
+        </PlayerProvider>
+      </ServerDataProvider>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </>
   );

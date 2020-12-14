@@ -1,25 +1,7 @@
 import React from "react";
-import { useInfiniteQuery } from "react-query";
 import Song from "./Song";
 import SongForm from "./SongForm";
-import { fetchSongs } from "./api";
-import { getParam } from "../../utils";
-
-function useQuerySong() {
-  const querySong = useInfiniteQuery("songs", fetchSongs, {
-    getFetchMore: (nextGroup, _allGroups) => {
-      const { next } = nextGroup.links;
-
-      if (next) {
-        return getParam(next, "page[number]");
-      }
-    },
-  });
-
-  const songs = (querySong.data || []).flatMap((group) => group.data);
-
-  return { ...querySong, songs };
-}
+import { useQuerySong } from "./hooks";
 
 function HeaderCountSongs() {
   const { songs, isLoading } = useQuerySong();
