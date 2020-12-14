@@ -102,7 +102,7 @@ GEM
     iso8601 (0.9.1)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    jsonapi-resources (0.10.2)
+    jsonapi-resources (0.9.11)
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
@@ -235,7 +235,7 @@ DEPENDENCIES
   byebug
   clearance
   jbuilder (~> 2.7)
-  jsonapi-resources
+  jsonapi-resources (= 0.9.11)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   pry-byebug

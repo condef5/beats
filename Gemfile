@@ -30,7 +30,7 @@ gem 'clearance'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'jsonapi-resources'
+gem "jsonapi-resources", "0.9.11"
 gem 'sprig'
 gem 'video_info'
 
