@@ -6,17 +6,18 @@ import { getParam } from "../../utils";
 export function useQuerySong() {
   const { initialSongs } = useServerData();
   const querySong = useInfiniteQuery("songs", fetchSongs, {
-    getFetchMore: (nextGroup, _allGroups) => {
-      const { next } = nextGroup.links;
+    getNextPageParam: (nextPage) => {
+      const { next } = nextPage.links;
 
       if (next) {
         return getParam(next, "page[number]");
       }
     },
-    initialData: initialSongs,
+    initialData: { pages: initialSongs },
+    keepPreviousData: true,
   });
 
-  const songs = (querySong.data || []).flatMap((group) => group.data);
+  const songs = (querySong.data?.pages || []).flatMap((group) => group.data);
 
   return { ...querySong, songs };
 }

@@ -1,27 +1,33 @@
 import React from "react";
-import { useMutation, queryCache } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import notify from "notify-space";
 import { createSong } from "./api";
 import { formatSong, getSongOptimistic } from "../../utils";
 
 function SongForm() {
-  const [mutate] = useMutation(createSong, {
-    onMutate: (song) => {
-      queryCache.cancelQueries("songs");
+  const queryClient = useQueryClient();
+  const { mutateAsync } = useMutation(createSong, {
+    onMutate: async (song) => {
+      await queryClient.cancelQueries("songs");
 
-      const previousGroupSongs = queryCache.getQueryData("songs");
+      const previousGroupSongs = queryClient.getQueryData("songs");
 
-      console.log(song);
-
-      queryCache.setQueryData("songs", (oldSongs) => {
-        return [{ data: [getSongOptimistic(song)] }, ...oldSongs];
+      queryClient.setQueryData("songs", (oldSongs) => {
+        const newPages = [
+          { data: [getSongOptimistic(song)] },
+          ...oldSongs.pages,
+        ];
+        return { ...oldSongs, pages: newPages };
       });
 
       return () => queryCache.setQueryData("songs", previousGroupSongs);
     },
     onError: (_error, _newSong, rollback) => rollback(),
-    onSettled: () => queryCache.invalidateQueries("songs"),
+    onSettled: () => {
+      queryClient.invalidateQueries("songs");
+    },
   });
+
   const [song, setSong] = React.useState("");
 
   async function handleSubmit(event) {
@@ -38,7 +44,7 @@ function SongForm() {
     setSong("");
 
     try {
-      const createdSong = await mutate(data);
+      const createdSong = await mutateAsync(data);
 
       if (createdSong.errors) {
         notify(createdSong.errors[0].title);
