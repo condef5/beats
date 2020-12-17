@@ -24,12 +24,12 @@ function SongList() {
       {querySong.songs.map((song) => (
         <Song key={song.id} song={song} />
       ))}
-      {querySong.canFetchMore ? (
+      {querySong.hasNextPage ? (
         <button
-          onClick={() => querySong.fetchMore()}
+          onClick={() => querySong.fetchNextPage()}
           className="bg-white text-gray-800 p-2 w-full rounded tracking-wide font-medium text-sm uppercase "
         >
-          Load more {querySong.isFetchingMore && "..."}
+          Load more {querySong.isFetchingNextPage && "..."}
         </button>
       ) : null}
     </>

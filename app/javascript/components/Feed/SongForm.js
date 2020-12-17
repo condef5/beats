@@ -1,27 +1,37 @@
 import React from "react";
-import { useMutation, queryCache } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import notify from "notify-space";
 import { createSong } from "./api";
 import { formatSong, getSongOptimistic } from "../../utils";
 
 function SongForm() {
-  const [mutate] = useMutation(createSong, {
-    onMutate: (song) => {
-      queryCache.cancelQueries("songs");
+  const queryClient = useQueryClient();
+  const { mutateAsync } = useMutation(createSong, {
+    onMutate: async (newSong) => {
+      await queryClient.cancelQueries("songs");
+      const previousSongs = queryClient.getQueryData("songs");
 
-      const previousGroupSongs = queryCache.getQueryData("songs");
+      queryClient.setQueryData("songs", (oldSongs) => {
+        const optimisticSong = getSongOptimistic(newSong);
+        const [firstPage, ...restPages] = oldSongs.pages;
+        const newPages = [
+          { ...firstPage, data: [optimisticSong, ...firstPage.data] },
+          ...restPages,
+        ];
 
-      console.log(song);
-
-      queryCache.setQueryData("songs", (oldSongs) => {
-        return [{ data: [getSongOptimistic(song)] }, ...oldSongs];
+        return { ...oldSongs, pages: newPages };
       });
 
-      return () => queryCache.setQueryData("songs", previousGroupSongs);
+      return { previousSongs };
     },
-    onError: (_error, _newSong, rollback) => rollback(),
-    onSettled: () => queryCache.invalidateQueries("songs"),
+    onError: (_err, _newSong, context) => {
+      queryClient.setQueryData("songs", context.previousSongs);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries("songs");
+    },
   });
+
   const [song, setSong] = React.useState("");
 
   async function handleSubmit(event) {
@@ -38,7 +48,7 @@ function SongForm() {
     setSong("");
 
     try {
-      const createdSong = await mutate(data);
+      const createdSong = await mutateAsync(data);
 
       if (createdSong.errors) {
         notify(createdSong.errors[0].title);

@@ -1,7 +1,7 @@
 import { getCSRFToken } from "../../utils";
 
-export async function fetchSongs(key, page = 1) {
-  const response = await fetch(`/api/songs?page[number]=${page}`);
+export async function fetchSongs({ pageParam = 1 }) {
+  const response = await fetch(`/api/songs?page[number]=${pageParam}`);
   return response.json();
 }
 
