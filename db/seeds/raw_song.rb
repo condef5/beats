@@ -404,8 +404,11 @@ records = [
     One Piece Ending 1 Sub Español
   ],
   %W[
-    https://youtu.be/QT9OawmZ_FY
-    One Piece Ending 1 Sub Español
+    https://youtu.be/KX2lPohQ3Gc
+    I'm Standing on a Million Lives opening
+  ],
+  %W[
+    https://youtu.be/QsbAT2B08os
   ],
 ]
 
@@ -418,6 +421,7 @@ records.each do |url, *name|
   content << "  - sprig_id: #{i}"
   content << "    url: #{url}"
   content << "    name: #{name.join(" ").dump}"
+  content << "    user_id: \"<%= sprig_record(User, 1).id %>\""
   content << ""
 end
 
