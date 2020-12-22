@@ -1,3 +1,3 @@
 include Sprig::Helpers
 
-sprig_shared [Song]
+sprig_shared [User, Song]

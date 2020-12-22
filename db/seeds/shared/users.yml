@@ -1,0 +1,8 @@
+records:
+  - sprig_id: 1
+    email: frankcondezo@gmail.com
+    password: letmein1
+
+  - sprig_id: 2
+    email: space@gmail.com
+    password: letmein1
