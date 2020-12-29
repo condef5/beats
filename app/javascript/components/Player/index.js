@@ -1,5 +1,5 @@
 import React from "react";
-import Video from "./Video";
+import Video from "./VideoPlayer";
 import Controls from "./Controls";
 import Songs from "./Songs";
 

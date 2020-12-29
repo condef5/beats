@@ -10,7 +10,7 @@ function findIndexSong(songs, currentSong) {
 function PlayerProvider({ children }) {
   const [preview, setPreview] = React.useState(true);
   const [playing, setPlaying] = React.useState(false);
-  const [currentSong, setCurrentSong] = React.useState(null);
+  const [currentSong, setCurrentSong] = React.useState(undefined);
   const [songs, setSongs] = React.useState([]);
 
   const handlePlay = () => {
@@ -24,7 +24,10 @@ function PlayerProvider({ children }) {
   };
 
   const addSong = (song) => {
-    if (!currentSong) setCurrentSong(song);
+    if (!currentSong) {
+      setCurrentSong(song);
+      setPlaying(true);
+    }
 
     if (findIndexSong(songs, song) !== -1) {
       notify("The song has already been added");
