@@ -51,6 +51,16 @@ function PlayerProvider({ children }) {
     setCurrentSong(songs[currentSongIndex - 1]);
   };
 
+  const onErrorSong = () => {
+    console.log(currentSong);
+    if (!currentSong) return;
+
+    const { name } = currentSong.attributes;
+
+    notify(`there was an error with the ${name} song`);
+    nextSong();
+  };
+
   const value = {
     songs,
     addSong,
@@ -63,6 +73,7 @@ function PlayerProvider({ children }) {
     handlePlay,
     handlePause,
     preview,
+    onErrorSong,
   };
 
   return (

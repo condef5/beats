@@ -12,16 +12,18 @@ function VideoPlayer() {
     preview,
     currentSong = {},
     nextSong,
+    onErrorSong,
   } = usePlayerState();
 
   React.useEffect(() => {
     setLoading(true);
   }, [currentSong.id]);
 
-  if (!currentSong.id)
+  if (!currentSong.id) {
     return (
       <div className="relative bg-white p-3 h-60 rounded shadow-card"></div>
     );
+  }
 
   const { url, image } = currentSong.attributes;
 
@@ -37,6 +39,7 @@ function VideoPlayer() {
         onPause={handlePause}
         onStart={() => setLoading(false)}
         onEnded={nextSong}
+        onError={onErrorSong}
       />
       <div
         className="video-overlay absolute inset-0 p-3 rounded shadow-card"
