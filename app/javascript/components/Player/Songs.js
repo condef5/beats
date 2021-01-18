@@ -36,11 +36,13 @@ function Song({ song, index }) {
             <div className="flex-shrink-0 mr-3 relative" onClick={handleClick}>
               <img
                 src={song.attributes.image}
-                alt=""
+                alt={song.attributes.name}
                 className="object-cover w-24 h-full"
-                style={{ filter: "opacity(0.75) grayscale(.75)" }}
               />
-              <div className="w-13 absolute bottom-0 right-0 text-white">
+              <div
+                className="absolute bottom-0 right-0 text-white bg-black text-right px-1 font-medium"
+                style={{ fontSize: "10px" }}
+              >
                 {formatSeconds(song.attributes.duration)}
               </div>
             </div>
