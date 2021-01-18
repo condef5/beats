@@ -51,6 +51,14 @@ export function formatSong(song_url) {
   return `https://youtu.be/${id}`;
 }
 
+export function reorder(list, startIndex, endIndex) {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+}
+
 export function getParam(url, paramKey) {
   const urlObject = new URL(url);
   const params = new URLSearchParams(urlObject.search);

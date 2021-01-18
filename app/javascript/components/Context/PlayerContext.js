@@ -10,7 +10,7 @@ function findIndexSong(songs, currentSong) {
 function PlayerProvider({ children }) {
   const [preview, setPreview] = React.useState(true);
   const [playing, setPlaying] = React.useState(false);
-  const [currentSong, setCurrentSong] = React.useState(null);
+  const [currentSong, setCurrentSong] = React.useState(undefined);
   const [songs, setSongs] = React.useState([]);
 
   const handlePlay = () => {
@@ -24,7 +24,10 @@ function PlayerProvider({ children }) {
   };
 
   const addSong = (song) => {
-    if (!currentSong) setCurrentSong(song);
+    if (!currentSong) {
+      setCurrentSong(song);
+      setPlaying(true);
+    }
 
     if (findIndexSong(songs, song) !== -1) {
       notify("The song has already been added");
@@ -34,9 +37,18 @@ function PlayerProvider({ children }) {
     setSongs((currentSongList) => [...currentSongList, song]);
   };
 
+  const removeSong = (song) => {
+    setSongs((currentSongList) =>
+      currentSongList.filter(({ id }) => song.id != id)
+    );
+  };
+
   const nextSong = () => {
     const currentSongIndex = findIndexSong(songs, currentSong);
-    if (currentSongIndex + 1 == songs.length) return;
+    if (currentSongIndex + 1 == songs.length) {
+      setCurrentSong(songs[0]);
+      return;
+    }
 
     setPlaying(true);
     setCurrentSong(songs[currentSongIndex + 1]);
@@ -48,9 +60,21 @@ function PlayerProvider({ children }) {
     setCurrentSong(songs[currentSongIndex - 1]);
   };
 
+  const onErrorSong = () => {
+    console.log(currentSong);
+    if (!currentSong) return;
+
+    const { name } = currentSong.attributes;
+    removeSong(currentSong);
+    notify(`There was an error with the ${name} song`);
+    nextSong();
+  };
+
   const value = {
     songs,
+    setSongs,
     addSong,
+    removeSong,
     prevSong,
     nextSong,
     currentSong,
@@ -60,6 +84,7 @@ function PlayerProvider({ children }) {
     handlePlay,
     handlePause,
     preview,
+    onErrorSong,
   };
 
   return (
