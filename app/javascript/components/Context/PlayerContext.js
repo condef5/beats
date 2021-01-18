@@ -45,7 +45,10 @@ function PlayerProvider({ children }) {
 
   const nextSong = () => {
     const currentSongIndex = findIndexSong(songs, currentSong);
-    if (currentSongIndex + 1 == songs.length) return;
+    if (currentSongIndex + 1 == songs.length) {
+      setCurrentSong(songs[0]);
+      return;
+    }
 
     setPlaying(true);
     setCurrentSong(songs[currentSongIndex + 1]);
@@ -58,6 +61,7 @@ function PlayerProvider({ children }) {
   };
 
   const onErrorSong = () => {
+    ``;
     console.log(currentSong);
     if (!currentSong) return;
 
