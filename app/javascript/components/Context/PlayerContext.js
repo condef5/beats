@@ -37,6 +37,12 @@ function PlayerProvider({ children }) {
     setSongs((currentSongList) => [...currentSongList, song]);
   };
 
+  const removeSong = (song) => {
+    setSongs((currentSongList) =>
+      currentSongList.filter(({ id }) => song.id != id)
+    );
+  };
+
   const nextSong = () => {
     const currentSongIndex = findIndexSong(songs, currentSong);
     if (currentSongIndex + 1 == songs.length) return;
@@ -65,6 +71,7 @@ function PlayerProvider({ children }) {
     songs,
     setSongs,
     addSong,
+    removeSong,
     prevSong,
     nextSong,
     currentSong,

@@ -1,4 +1,5 @@
 import React from "react";
+import { TrashIcon } from "./icons";
 import { formatSeconds } from "../../utils";
 import { usePlayerState } from "../Context/PlayerContext";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
@@ -12,14 +13,15 @@ function Song({ song, index }) {
     removeSong,
   } = usePlayerState();
 
+  function handleClick() {
+    setCurrentSong(song);
+    setPlaying(true);
+  }
+
   return (
     <Draggable draggableId={song.id} index={index}>
       {(provided) => (
         <div
-          onClick={() => {
-            setCurrentSong(song);
-            setPlaying(true);
-          }}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -31,7 +33,7 @@ function Song({ song, index }) {
               color: song.id == currentSong.id && "#f9556bad",
             }}
           >
-            <div className="flex-shrink-0 mr-3 relative">
+            <div className="flex-shrink-0 mr-3 relative" onClick={handleClick}>
               <img
                 src={song.attributes.image}
                 alt=""
@@ -42,9 +44,19 @@ function Song({ song, index }) {
                 {formatSeconds(song.attributes.duration)}
               </div>
             </div>
-            <span className="overflow-ellipsis overflow-hidden mr-3">
+            <span
+              className="overflow-ellipsis overflow-hidden mr-3"
+              onClick={handleClick}
+            >
               {song.attributes.name}
             </span>
+            <div className="flex-shrink-0 ml-auto">
+              <TrashIcon
+                stroke="#f56565"
+                fillColor="#fff"
+                onClick={() => removeSong(song)}
+              />
+            </div>
           </div>
         </div>
       )}
