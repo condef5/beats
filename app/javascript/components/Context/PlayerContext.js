@@ -63,6 +63,7 @@ function PlayerProvider({ children }) {
 
   const value = {
     songs,
+    setSongs,
     addSong,
     prevSong,
     nextSong,
