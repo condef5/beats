@@ -1,6 +1,7 @@
 class Song < ApplicationRecord
   # callbacks
   before_create :set_video_info
+  belongs_to :user
 
   # validations
   validates :url, presence: true, uniqueness: { message: "The video url has been taken." }
