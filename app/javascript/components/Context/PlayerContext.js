@@ -61,13 +61,12 @@ function PlayerProvider({ children }) {
   };
 
   const onErrorSong = () => {
-    ``;
     console.log(currentSong);
     if (!currentSong) return;
 
     const { name } = currentSong.attributes;
-
-    notify(`there was an error with the ${name} song`);
+    removeSong(currentSong);
+    notify(`There was an error with the ${name} song`);
     nextSong();
   };
 
