@@ -1,8 +1,9 @@
 import React from "react";
 import notify from "notify-space";
+import { updateSong } from "../Feed/api";
+import { useQueryClient } from "react-query";
 
 const PlayerContext = React.createContext(null);
-
 function findIndexSong(songs, currentSong) {
   return songs.findIndex((song) => song.id == currentSong.id);
 }
@@ -12,6 +13,7 @@ function PlayerProvider({ children }) {
   const [playing, setPlaying] = React.useState(false);
   const [currentSong, setCurrentSong] = React.useState(undefined);
   const [songs, setSongs] = React.useState([]);
+  const queryClient = useQueryClient();
 
   const handlePlay = () => {
     setPreview(false);
@@ -64,9 +66,19 @@ function PlayerProvider({ children }) {
     console.log(currentSong);
     if (!currentSong) return;
 
-    const { name } = currentSong.attributes;
-    removeSong(currentSong);
+    const {
+      attributes: { name },
+      id,
+    } = currentSong;
     notify(`There was an error with the ${name} song`);
+
+    updateSong({ type: "songs", id, attributes: { corruptSong: true } }).then(
+      () => {
+        queryClient.invalidateQueries("songs");
+      }
+    );
+
+    removeSong(currentSong);
     nextSong();
   };
 
