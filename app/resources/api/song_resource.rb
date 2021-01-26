@@ -1,5 +1,8 @@
 class Api::SongResource < JSONAPI::Resource
-  attributes :name, :url, :image, :duration
+  attribute :id
+  attributes :name, :url, :image, :corrupt_song, :duration
+
+  filter :corrupt_song, default: "false"
 
   def self.default_sort
     [{ field: 'created_at', direction: :desc }]
