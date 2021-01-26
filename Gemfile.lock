@@ -88,6 +88,10 @@ GEM
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     debug_inspector (0.0.3)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     email_validator (2.0.1)
       activemodel
     erubi (1.10.0)
@@ -234,6 +238,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   clearance
+  dotenv-rails
   jbuilder (~> 2.7)
   jsonapi-resources (= 0.9.11)
   listen (~> 3.2)
@@ -254,4 +259,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.1.4
+   2.2.5
