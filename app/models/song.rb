@@ -20,14 +20,15 @@ end
 #
 # Table name: songs
 #
-#  id         :bigint           not null, primary key
-#  duration   :string
-#  image      :string
-#  name       :string
-#  url        :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           default(1), not null
+#  id           :bigint           not null, primary key
+#  corrupt_song :boolean          default(FALSE)
+#  duration     :string
+#  image        :string
+#  name         :string
+#  url          :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :bigint           not null
 #
 # Indexes
 #
