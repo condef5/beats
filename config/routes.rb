@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   namespace :api do
     jsonapi_resources :songs
   end
+
+  mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
 end
