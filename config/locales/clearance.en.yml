@@ -54,11 +54,11 @@ en:
       title: Reset your password
   sessions:
     form:
-      forgot_password: Forgot password?
+      forgot_password: Forgot your password?
       sign_up: Sign up
     new:
-      title: Sign in
+      title: Sing in to your account
   users:
     new:
       sign_in: Sign in
-      title: Sign up
+      title: Create your account
