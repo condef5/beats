@@ -1,3 +1,4 @@
+const plugin = require("tailwindcss/plugin");
 const numberToSpacing = (number) => ({ [`${number}`]: `${number * 0.25}rem` });
 const spacingSizes = Array.from({ length: 128 }).reduce(
   (acc, _, index) => ({ ...acc, ...numberToSpacing(index) }),
@@ -25,13 +26,17 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-
       black: "#000",
       white: "#fff",
       sky: {
         default: "#f3f8fe",
+        700: "#f2f7ff",
+      },
+      dark: {
+        default: "#1F2937",
       },
       gray: {
+        default: "#757E98",
         100: "#f7fafc",
         200: "#edf2f7",
         300: "#e2e8f0",
@@ -54,6 +59,7 @@ module.exports = {
         900: "#742a2a",
       },
       orange: {
+        default: "#FA7C05",
         100: "#fffaf0",
         200: "#feebc8",
         300: "#fbd38d",
@@ -144,24 +150,7 @@ module.exports = {
     },
     spacing: {
       px: "1px",
-      0: "0",
-      1: "0.25rem",
-      2: "0.5rem",
-      3: "0.75rem",
-      4: "1rem",
-      5: "1.25rem",
-      6: "1.5rem",
-      8: "2rem",
-      10: "2.5rem",
-      12: "3rem",
-      16: "4rem",
-      20: "5rem",
-      24: "6rem",
-      32: "8rem",
-      40: "10rem",
-      48: "12rem",
-      56: "14rem",
-      64: "16rem",
+      ...spacingSizes,
     },
     backgroundColor: (theme) => theme("colors"),
     backgroundImage: {
@@ -295,6 +284,7 @@ module.exports = {
         "monospace",
       ],
       rubik: "'Rubik', sans-serif",
+      nunito: "'Nunito', sans-serif",
     },
     fontSize: {
       xs: "0.75rem",
@@ -847,5 +837,17 @@ module.exports = {
     animation: ["responsive"],
   },
   corePlugins: {},
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".center": {
+          display: "flex",
+          "align-items": "center",
+          "justify-content": "center",
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive"]);
+    }),
+  ],
 };
