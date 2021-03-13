@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   # clearance routes
-  resources :passwords, controller: "passwords", only: [:create, :new]
-  resource :session, controller: "clearance/sessions", only: [:create]
+  resources :passwords, only: [:create, :new]
+  resource :session, only: [:create]
 
   resources :users, controller: "users", only: [:create] do
     resource :password,
