@@ -7,6 +7,7 @@
 #  email              :string           not null
 #  encrypted_password :string(128)      not null
 #  remember_token     :string(128)      not null
+#  username           :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
