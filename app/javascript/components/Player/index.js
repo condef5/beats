@@ -3,9 +3,15 @@ import Video from "./VideoPlayer";
 import Controls from "./Controls";
 import Songs from "./Songs";
 
+const playerStyles = {
+  height: 'fit-content',
+  top: '80px',
+  width: "min(520px, 50%)"
+};
+
 function Player() {
   return (
-    <div className="player-container z-10 md:p-8 top-0 sticky" style={{ height: 'fit-content', top: '80px' }}>
+    <div className="z-10 md:p-8 top-0 sticky" style={playerStyles}>
       <Video />
       <Songs />
       <Controls />
