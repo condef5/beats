@@ -1,0 +1,22 @@
+<%= form_with(model: playlist, local: true, class: 'w-100') do |form| %>
+  <% if playlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(playlist.errors.count, "error") %> prohibited this playlist from being saved:</h2>
+
+      <ul>
+        <% playlist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="">
+    <%= form.label :name, class: "block text-sm text-gray-00 mb-2" %>
+    <%= form.text_field :name, class:"w-full px-5 py-1 text-gray-700 bg-white-200 rounded" %>
+  </div>
+
+  <div class="mt-4 bg-gray-50 text-right">
+    <%= form.submit 'Save', class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+  </div>
+<% end %>

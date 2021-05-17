@@ -1,0 +1,3 @@
+<% flash.to_hash.symbolize_keys.slice(:alert, :notice).each do |key, value| %>
+  <div class="absolute top-0 w-full text-center text-white bg-indigo-700 p-2"><%= h value %></div>
+<% end %>

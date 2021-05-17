@@ -2,20 +2,9 @@
   <%= javascript_packs_with_chunks_tag "home" %>
 <% end %>
 
-<div class="bg-sky h-screen main-grid">
-  <div class="bg-white flex items-center justify-between p-4 md:flex-col md:py-8 md:px-0">
-    <div><%= image_tag "icons/logo.svg", class: "w-12 md:w-auto" %></div>
-    <div>
-      <%= link_to(sign_out_path, method: :delete) do %>
-        <%= image_tag "icons/logout.svg", class: "logout-icon" %>
-      <% end %>
-    </div>
-  </div>
-
-  <%= content_tag(
-    :div,
-    nil,
-    id: "app",
-    data: { songs: @initial_songs }
-  )%>
-</div>
+<%= content_tag(
+  :div,
+  nil,
+  id: "app",
+  data: { songs: @initial_songs }
+)%>

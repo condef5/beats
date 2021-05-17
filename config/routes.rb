@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       only: [:edit, :update]
   end
 
+  resources :playlists
+
   get "/sign_in" => "sessions#new", as: "sign_in"
   get "/sign_up" => "users#new", as: "sign_up"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

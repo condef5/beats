@@ -39,12 +39,10 @@ function SongList() {
 function Feed() {
   return (
     <div className="content p-4 md:py-8">
-      <div className="md:w-1/2">
-        <div className="m-auto" style={{ maxWidth: "400px" }}>
-          <SongForm />
-          <HeaderCountSongs />
-          <SongList />
-        </div>
+      <div className="m-auto" style={{ maxWidth: "400px" }}>
+        <SongForm />
+        <HeaderCountSongs />
+        <SongList />
       </div>
     </div>
   );

@@ -21,9 +21,27 @@
   </head>
 
   <body class="font-rubik antialiased">
+    <div class="bg-sky" style="min-height: 100vh">
+      <div class="bg-white h-15 top-0 sticky flex items-center justify-between p-4">
+        <%= link_to root_path do %>
+          <%= image_tag "icons/logo.svg", class: "w-12" %>
+        <% end %>
+        <div>
+          <%= link_to "Playlists", playlists_path %>
+        </div>
+        <div class="flex content-end">
+          <%= link_to(sign_out_path, method: :delete) do %>
+            <%= image_tag "icons/logout.svg", class: "logout-icon" %>
+          <% end %>
+        </div>
+      </div>
 
-    <%= render "layouts/shared/messages" %>
-
-    <%= yield %>
+      <div>
+        <div class="container m-auto px-4 mt-4">
+          <%= render "layouts/shared/messages" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
