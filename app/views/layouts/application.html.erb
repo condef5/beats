@@ -21,13 +21,13 @@
   </head>
 
   <body class="font-rubik antialiased">
-    <div class="bg-sky h-screen main-grid">
-      <div class="bg-white flex items-center justify-between p-4 md:flex-col md:py-8 md:px-0">
-      <div>
-          <%= image_tag "icons/logo.svg", class: "w-12 mb-4 md:w-auto" %>
+    <div class="bg-sky" style="min-height: 100vh">
+      <div class="bg-white h-15 top-0 sticky flex items-center justify-between p-4">
+        <%= image_tag "icons/logo.svg", class: "w-12" %>
+        <div>
           <%= link_to "Playlists", playlists_path %>
         </div>
-        <div>
+        <div class="flex content-end">
           <%= link_to(sign_out_path, method: :delete) do %>
             <%= image_tag "icons/logout.svg", class: "logout-icon" %>
           <% end %>
