@@ -12,7 +12,7 @@ html {
     }
 
     .player-container {
-      max-width: 600px;
+      width: min(520px, 50%);
     }
   }
 }
