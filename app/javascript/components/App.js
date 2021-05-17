@@ -13,7 +13,7 @@ function App({ songs }) {
     <QueryClientProvider client={queryClient}>
       <ServerDataProvider data={{ initialSongs: [songs] }}>
         <PlayerProvider>
-          <div className="sub-grid">
+          <div className="md:flex md:justify-center">
             <Feed />
             <Player />
           </div>

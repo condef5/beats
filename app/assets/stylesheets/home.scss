@@ -2,21 +2,6 @@ html {
   box-sizing: border-box;
 }
 
-.sub-grid {
-  @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-
-    .content {
-      padding: 2em;
-    }
-
-    .player-container {
-      width: min(520px, 50%);
-    }
-  }
-}
-
 .logout-icon {
   filter: invert(1);
 
