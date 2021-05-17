@@ -23,7 +23,9 @@
   <body class="font-rubik antialiased">
     <div class="bg-sky" style="min-height: 100vh">
       <div class="bg-white h-15 top-0 sticky flex items-center justify-between p-4">
-        <%= image_tag "icons/logo.svg", class: "w-12" %>
+        <%= link_to root_path do %>
+          <%= image_tag "icons/logo.svg", class: "w-12" %>
+        <% end %>
         <div>
           <%= link_to "Playlists", playlists_path %>
         </div>
